@@ -1,0 +1,53 @@
+package com.harlap.snowshoe;
+
+import android.util.Pair;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * StampTouch represents the touch data from using a SnowShoe stamp.
+ */
+public class StampTouch {
+    private final List<Pair<Float, Float>> points = new ArrayList<Pair<Float, Float>>(5);
+
+    /**
+     * getPoints returns a list of x,y point pairs containing all the points of the stamp.
+     *
+     * @return The list of points.
+     */
+    public List<Pair<Float, Float>> getPoints() {
+        return points;
+    }
+
+    /**
+     * addPoint adds a single x,y coordinate pair to the touch coordinate set. Returns this so can be chained.
+     * <p/>
+     * Note that a StampTouch should have exactly 5 points, and a runtime exception will be thrown if more than 5 points are added.
+     *
+     * @param x The X coordinate of the touch point.
+     * @param y The Y coordinate of the touch point.
+     * @return This StampTouch so that invocations can be chained.
+     * @throws RuntimeException
+     */
+    public StampTouch addPoint(Float x, Float y) {
+        if (points.size() >= 5) {
+            throw new RuntimeException("StampTouch can only have 5 points!");
+        }
+
+        points.add(new Pair<Float, Float>(x, y));
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("StampTouch [");
+        for (int i = 0; i < points.size(); i++) {
+            builder.append("(").append(points.get(i).first).append(",").append(points.get(i).second).append(")");
+            if (points.size() > i + 1) builder.append(", ");
+        }
+        builder.append("]");
+        return builder.toString();
+    }
+}
