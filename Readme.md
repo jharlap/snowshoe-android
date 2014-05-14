@@ -1,6 +1,6 @@
 # SnowShoe Android Library
 
-This Android library makes it easy to add SnowShoe stamp functionality to an app.
+This Android library makes it easy to add [SnowShoe stamp](http://www.snowshoestamp.com/) functionality to an app.
 
 There are two main ways to use the library, depending on whether you use a SnowShoe SDK on your own server or whether you want the Android app to talk directly to SnowShoe's servers.
 
