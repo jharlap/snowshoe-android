@@ -9,14 +9,14 @@ import java.util.List;
  * StampTouch represents the touch data from using a SnowShoe stamp.
  */
 public class StampTouch {
-    private final List<Pair<Float, Float>> points = new ArrayList<Pair<Float, Float>>(5);
+    private final List<float[]> points = new ArrayList<float[]>(5);
 
     /**
      * getPoints returns a list of x,y point pairs containing all the points of the stamp.
      *
      * @return The list of points.
      */
-    public List<Pair<Float, Float>> getPoints() {
+    public List<float[]> getPoints() {
         return points;
     }
 
@@ -35,7 +35,7 @@ public class StampTouch {
             throw new RuntimeException("StampTouch can only have 5 points!");
         }
 
-        points.add(new Pair<Float, Float>(x, y));
+        points.add(new float[] {x, y});
         return this;
     }
 
@@ -44,7 +44,8 @@ public class StampTouch {
         StringBuilder builder = new StringBuilder();
         builder.append("StampTouch [");
         for (int i = 0; i < points.size(); i++) {
-            builder.append("(").append(points.get(i).first).append(",").append(points.get(i).second).append(")");
+            float[] point = points.get(i);
+            builder.append("[").append(point[0]).append(",").append(point[1]).append("]");
             if (points.size() > i + 1) builder.append(", ");
         }
         builder.append("]");

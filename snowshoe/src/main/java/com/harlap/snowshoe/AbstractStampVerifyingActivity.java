@@ -11,10 +11,6 @@ import android.os.Bundle;
  */
 public abstract class AbstractStampVerifyingActivity extends AbstractStampSensingActivity {
 
-
-    public String SNOWSHOE_APP_KEY = "";
-    public String SNOWSHOE_APP_SECRET = "";
-
     /**
      * Event handler for stamp verification.
      *
@@ -24,16 +20,22 @@ public abstract class AbstractStampVerifyingActivity extends AbstractStampSensin
 
     private Boolean stampBeingChecked = false;
 
-    StampVerifier stampVerifier;
+    StampVerifier stampVerifier = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        stampVerifier = new StampVerifier(SNOWSHOE_APP_KEY, SNOWSHOE_APP_SECRET);
+    }
+
+    protected void setSnowShoeKeys(String appKey, String appSecret) {
+        stampVerifier = new StampVerifier(appKey, appSecret);
     }
 
     @Override
     protected void onStampTouch(StampTouch stampTouch) {
+        if (stampVerifier == null) {
+            throw new RuntimeException("You must call setSnowShoeKeys in onCreate()");
+        }
         if (!stampBeingChecked) {
             stampBeingChecked = true;
             new VerifyStampTask().execute(stampTouch);

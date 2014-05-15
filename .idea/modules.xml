@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/snowshoe/snowshoe.iml" filepath="$PROJECT_DIR$/snowshoe/snowshoe.iml" />
       <module fileurl="file://$PROJECT_DIR$/snowshoe-android.iml" filepath="$PROJECT_DIR$/snowshoe-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/snowshoeExampleApp/snowshoeExampleApp.iml" filepath="$PROJECT_DIR$/snowshoeExampleApp/snowshoeExampleApp.iml" />
     </modules>
   </component>
 </project>

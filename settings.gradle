@@ -1,1 +1,1 @@
-include ':snowshoe'
+include ':snowshoe', ':snowshoeExampleApp'

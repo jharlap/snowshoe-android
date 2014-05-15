@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SnowShoe Example</string>
+    <string name="hello_world">Make a pretty activity - it can obviously request a stamp or not... Stamp now!</string>
+
+</resources>

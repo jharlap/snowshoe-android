@@ -24,6 +24,8 @@ If you want to send the stamp coordinates to your own server for verification, s
 
 ## Talking directly to SnowShoe's servers from the app
 
-If you prefer to do stamp verification within the Android app, then subclass `AbstractStampVerifyingActivity`, set `SNOWSHOE_APP_KEY` and `SNOWSHOE_APP_SECRET` within `onCreate()`, and override `onStampVerified(SnowShoeResponse response)` to handle the data returned from SnowShoe's API. Note that the response is deserialized using Gson, and you can check for errors returned by the API with `response.getError()` and retrieve the stamp serial number with `response.getStamp().getSerial()`.
+If you prefer to do stamp verification within the Android app, then subclass `AbstractStampVerifyingActivity`, call `setSnowShoeKeys(appKey, appSecret)` within `onCreate()`, and override `onStampVerified(SnowShoeResponse response)` to handle the data returned from SnowShoe's API. Note that the response is deserialized using Gson, and you can check for errors returned by the API with `response.getError()` and retrieve the stamp serial number with `response.getStamp().getSerial()`.
 
-Also ensure that your app includes the `android.permission.INTERNET` permission.
+## Permissions
+
+Note that including the library causes your app to include the `android.permission.INTERNET` permission, as it is necessary for validating stamps.
