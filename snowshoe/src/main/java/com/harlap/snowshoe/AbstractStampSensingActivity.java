@@ -14,7 +14,10 @@ public abstract class AbstractStampSensingActivity extends Activity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        if (event.getAction() == MotionEvent.ACTION_MOVE) {
+        if (event.getActionMasked() == MotionEvent.ACTION_MOVE ||
+                event.getActionMasked() == MotionEvent.ACTION_DOWN ||
+                event.getActionMasked() == MotionEvent.ACTION_POINTER_DOWN) {
+
             if (event.getPointerCount() == 5) {
                 StampTouch stampTouch = new StampTouch()
                         .addPoint(event.getX(0), event.getY(0))
