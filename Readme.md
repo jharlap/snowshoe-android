@@ -29,3 +29,7 @@ If you prefer to do stamp verification within the Android app, then subclass `Ab
 ## Permissions
 
 Note that including the library causes your app to include the `android.permission.INTERNET` permission, as it is necessary for validating stamps.
+
+## Device Support
+
+[SnowShoe](http://www.snowshoestamp.com/) says that stamps work on 90% of devices sold today. If you want to detect if the device running your app supports 5 finger touch events, you can override the `onJazzHandsNotSupported()` method that's part of the abstract activities. If it's critical for your app that stamps be supported, you can add `<uses-feature>` elements to your app manifest for `android.hardware.touchscreen.multitouch.jazzhand` and `android.hardware.touchscreen.multitouch.distinct`.

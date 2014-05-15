@@ -1,6 +1,9 @@
 package com.harlap.snowshoe;
 
 import android.app.Activity;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 
 /**
@@ -8,7 +11,25 @@ import android.view.MotionEvent;
  */
 public abstract class AbstractStampSensingActivity extends Activity {
 
+    private static final String TAG = "AbstractStampSensingActivity";
+
     abstract protected void onStampTouch(StampTouch stampTouch);
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        PackageManager packageManager = getPackageManager();
+        if (packageManager != null &&
+                (!packageManager.hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN_MULTITOUCH_JAZZHAND) ||
+                        !packageManager.hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN_MULTITOUCH_DISTINCT))) {
+            onJazzHandsNotSupported();
+        }
+    }
+
+    protected void onJazzHandsNotSupported() {
+        Log.i(TAG, "Warning: Device does not support simultaneous 5 point touch events");
+    }
 
     // function that interprets the 5-touch action
     @Override
