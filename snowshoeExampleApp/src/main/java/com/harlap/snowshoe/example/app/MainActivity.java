@@ -27,7 +27,8 @@ public class MainActivity extends AbstractStampVerifyingActivity {
             }
         });
 
-//        setSnowShoeKeys("MY APP KEY", "MY APP SECRET");
+        // setSnowShoeKeys("MY APP KEY", "MY APP SECRET");
+        // These are keys for a toy app that only has dev stamps registered - misuse will lead to the keys changing.
         setSnowShoeKeys("f170c376472ba0380156", "4ff5c2c01d6834c5968e74e4826e30ac2b020487");
     }
 
