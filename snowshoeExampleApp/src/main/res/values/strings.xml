@@ -3,5 +3,6 @@
 
     <string name="app_name">SnowShoe Example</string>
     <string name="hello_world">Make a pretty activity - it can obviously request a stamp or not... Stamp now!</string>
+    <string name="toggle_sensing">Toggle Stamp Sensing</string>
 
 </resources>

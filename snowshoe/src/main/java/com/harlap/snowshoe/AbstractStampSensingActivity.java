@@ -13,8 +13,29 @@ public abstract class AbstractStampSensingActivity extends Activity {
 
     private static final String TAG = "AbstractStampSensingActivity";
     private long lastHandledEventDownTime = 0;
+    private boolean isSensingEnabled = true;
 
+    /**
+     * Event handler for stamp sense events.
+     * @param stampTouch The stamp touch points
+     */
     abstract protected void onStampTouch(StampTouch stampTouch);
+
+    /**
+     * Gets the stamp touch sensing enabled state.
+     * @return True if the activity is listening for stamp events.
+     */
+    protected boolean getSensingEnabled() {
+        return isSensingEnabled;
+    }
+
+    /**
+     * Enables or disables stamp touch sensing.
+     * @param enabled Is stamp sensing enabled? Default: true.
+     */
+    protected void setSensingEnabled(boolean enabled) {
+        isSensingEnabled = enabled;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +56,7 @@ public abstract class AbstractStampSensingActivity extends Activity {
     // function that interprets the 5-touch action
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (!isSensingEnabled) return false;
 
         int actionMasked = event.getActionMasked();
         if (actionMasked == MotionEvent.ACTION_MOVE ||
